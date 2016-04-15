@@ -11,9 +11,16 @@ se met à jour (seulement quand on update le css pour le moment).
 Naviguez vers <http://localhost:1234>.
 
 # En savoir plus
+Le plus important, c'est de comprendre Lost pour gérer le grid html.
 
 ## Lost Grid
 <https://github.com/peterramsing/lost>
+
+## Boy
+<https://github.com/corysimmons/boy>
+
+## Responsive Type
+<https://github.com/seaneking/postcss-responsive-type> *inspiré de Typographic*
 
 ## Jade (templates)
 <http://jade-lang.com/reference/>
