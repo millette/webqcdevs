@@ -1,8 +1,7 @@
 module.exports = {
   entry: [
     './entry.js',
-    'file?name=index2.html!jade-html!./index2.jade',
-    'file?name=index3.html!jade-html!./index3.jade'
+    'file?name=index.html!jade-html!./index.jade'
   ],
   output: {
     path: __dirname,
