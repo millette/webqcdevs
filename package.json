@@ -1,4 +1,13 @@
 {
+  "name": "boy-lost-webpack",
+  "description": "Exploring webpack and lost.",
+  "version": "2.0.1",
+  "repository": "millette/boy-lost-webpack",
+  "author": {
+    "name": "Robin Millette",
+    "email": "robin@millette.info",
+    "url": "http://robin.millette.info"
+  },
   "scripts": {
     "start": "webpack-dev-server"
   },
