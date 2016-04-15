@@ -9,4 +9,3 @@ $ npm start
 se met à jour (seulement quand on update le css pour le moment).
 
 Naviguez vers <http://localhost:1234>.
-

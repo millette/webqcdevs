@@ -1,12 +1,14 @@
 module.exports = {
-  entry: './entry.js',
+  entry: [
+    './entry.js',
+    'file?name=index2.html!jade-html!./index2.jade'
+  ],
   output: {
     path: __dirname,
     filename: 'bundle.js'
   },
   devServer: {
     inline: true,
-    noInfo: true,
     port: 1234
   },
   module: {

@@ -5,6 +5,9 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "jade": "^1.11.0",
+    "jade-html-loader": "0.0.3",
     "lost": "^6.7.2",
     "postcss-loader": "^0.8.2",
     "postcss-responsive-type": "^0.3.3",
