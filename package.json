@@ -1,15 +1,26 @@
 {
   "name": "boy-lost-webpack",
   "description": "Exploring webpack and lost.",
-  "version": "2.0.1",
+  "license": "MIT",
+  "version": "3.0.0",
   "repository": "millette/boy-lost-webpack",
   "author": {
     "name": "Robin Millette",
     "email": "robin@millette.info",
     "url": "http://robin.millette.info"
   },
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "standard && webpack-dev-server",
+    "lint": "standard",
+    "make": "standard && webpack && mkdir -p dist/js/polyfill/ ; cp crossdomain.xml logo.png favicon.ico index.html bundle.js dist/ && cp js/polyfill/* dist/js/polyfill/"
+  },
+  "standard": {
+    "ignore": [
+      "js/polyfill/"
+    ]
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
