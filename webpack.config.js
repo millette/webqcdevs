@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
   entry: [
     './entry.js',
@@ -9,6 +11,7 @@ module.exports = {
   },
   devServer: {
     inline: true,
+    host: '0.0.0.0',
     port: 1234
   },
   module: {
@@ -19,9 +22,13 @@ module.exports = {
       }
     ]
   },
-  postcss: [
+  postcss: (webpack) => [
+    require('postcss-import')({ addDependencyTo: webpack }),
+    require('postcss-url')(),
+    require('postcss-cssnext')(),
     require('postcss-responsive-type')(),
     require('lost'),
-    require('autoprefixer')
+    require('postcss-browser-reporter')(),
+    require('postcss-reporter')()
   ]
 }
