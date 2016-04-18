@@ -349,14 +349,16 @@ $ npm run make
 Construit une version de production du projet dans le répertoire ./dist/
 qu'on pourra copier sur un serveur web pour le rendre public.
 
-## Lancer webpack
+## Lost commence après cette section, c'est promis!
+
+### Lancer webpack
 La commande webpack va générer le fichier bundle.js
 (et index.html à partir du fichier jade - nous y reviendrons). Comme
 notre objectif est de lancer une commande, d'éditer nos fichiers et
 de voir nos changements dans le fureteur sans autre intervention,
 nous allons regarder un peu plus loin.
 
-## webpack-dev-server
+### webpack-dev-server
 Le projet [webpack-dev-server][] est un serveur web de développement.
 **Ne l'utiliser jamais en production!**
 
@@ -370,17 +372,63 @@ pour lancer le cycle d'édition.
 
 [webpack-dev-server]: https://github.com/webpack/webpack-dev-server
 
+### webpack.config.js et entry.js
+Je disais précédemment que les fichiers `webpack.config.js` et `entry.js`
+cité plus haut manquaient quelques lignes. La première concerne
+[postcss-responsive-type][] démontré par ce gif animé: ![Responsive Type Demo][demo-responsive-type]
 
-<!--
-NOUS Y REVIENDRONS #1
-    'file?name=index.html!jade-html!./index.jade'
-...
+On a donc besoin de cette ligne (avec ses cousins) dans webpack.config.js:
+
+```javascript
     require('postcss-responsive-type')(),
-...
+```
+
+Une chose étrange que j'ai remarqué c'est que la ligne qui déclarait
+le style dans le HTML n'était plus nécessaires en chargent bundle.js.
+Je dis étrange, parce que c'était mes premiers pas avec webpack, mais
+ça n'a rien de surprenant quand on comprend l'outil un peu mieux.
+
+Il en est de même pour le fichier js/main.js - si on le déclare
+dans entry.js, plus besoin de l'inclure dans le HTML.
+
+Il faut ajouter cette ligne dans entry.js:
+
+```javascript
 require('./js/main.js')
+```
 
-NOUS Y REVIENDRONS #2
-À propos de jade
+Le dernier changement concerne Jade. Pour la petite histoire,
+je ne comptais pas du tout utiliser de template. Je préfère EJS et
+les templates lodash/underscore à Jade de toutes façons.
 
--->
+Mon problème, c'est que même avec webpack-dev-server, les éditions au
+fichier HTML ne déclenchaient pas de rafraichissement du côté du fureteur.
+J'ai un peu cherché une solution mais c'est là que je suis tombé sur la
+recette avec Jade.
 
+Cette ligne va dans webpack.config.js dans le tableau entry:
+
+```javascript
+    'file?name=index.html!jade-html!./index.jade'
+```
+
+Autrement dit:
+
+```javascript
+  entry: [
+    './entry.js',
+    'file?name=index.html!jade-html!./index.jade'
+  ],
+```
+
+Maintenant quand on démarre webpack-dev-server et qu'on édite et sauve
+index.jade, style.css ou main.js, le fureteur va se rafraichir automatiquement.
+
+[postcss-responsive-type]: https://github.com/seaneking/postcss-responsive-type
+[demo-responsive-type]: https://raw.githubusercontent.com/seaneking/postcss-responsive-type/master/demo.gif
+
+### À propos de Jade
+Jade est un engin de template HTML sans les < et > et qui repose sur
+l'indentation pour représenter l'arbre du document.
+
+## Lost, prêt à s'y retrouver
