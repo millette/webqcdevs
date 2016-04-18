@@ -5,6 +5,8 @@ $ npm install
 $ npm start
 ```
 
+**En savoir plus? [webpack-et-lost sur robin.millette.info](http://robin.millette.info/webpack-et-lost).**
+
 Deux autres scripts sont configurés:
 
 ```sh
