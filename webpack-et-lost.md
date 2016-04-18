@@ -431,4 +431,13 @@ index.jade, style.css ou main.js, le fureteur va se rafraichir automatiquement.
 Jade est un engin de template HTML sans les < et > et qui repose sur
 l'indentation pour représenter l'arbre du document.
 
+Je ne pensais pas en avoir besoin, mais il s'avère que pouvoir faire
+des boucles paramétrables sur du HTML c'est très pratique. C'est utilisé
+sur [le point RoLLodeQc][] en bas de page pour énumérer les modules
+sans toujours recopier le même HTML, par exemple.
+
+[le point RoLLodeQc]: http://lepoint.rollodeqc.com/#modules
+
 ## Lost, prêt à s'y retrouver
+Enfin, tel que promis il y a 1500 mots, le temps de regarder Lost de
+plus près pour maitriser les grilles *responsive*.
