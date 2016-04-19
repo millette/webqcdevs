@@ -279,6 +279,11 @@ Deux autres champs méritent notre attention, soit `scripts` et `standard`:
 }
 ```
 
+### Problème d'encodage
+**ATTENTION:** *Il faut remplacer les **&amp;** par **&** dans
+le bout de script ci-haut à cause d'un problème d'encodage dans l'outil
+derrière ce site. Les sources n'ont pas ce problème.*
+
 `standard` configure [standardjs][] pour ignorer les fichiers *third party*
 quand vient le temps de *linter* les sources. C'est à dire que
 les fichiers JavaScript (js/main.js, webpack.config.js, etc.)
@@ -315,6 +320,11 @@ Donc, l'autre champ du fichier package.json c'est `scripts`:
   "start": "standard && webpack-dev-server"
 }
 ```
+
+### Problème d'encodage
+**ATTENTION:** *Il faut remplacer les **&amp;** par **&** dans
+le bout de script ci-haut à cause d'un problème d'encodage dans l'outil
+derrière ce site. Les sources n'ont pas ce problème.*
 
 Les commandes ```standard```, ```webpack``` et ```webpack-dev-server```
 se trouvent toutes dans ./node_modules/.bin/ et npm saura où les trouver
@@ -384,7 +394,7 @@ On a donc besoin de cette ligne (avec ses cousins) dans webpack.config.js:
 ```
 
 Une chose étrange que j'ai remarqué c'est que la ligne qui déclarait
-le style dans le HTML n'était plus nécessaires en chargent bundle.js.
+le style dans le HTML n'était plus nécessaires en chargeant bundle.js.
 Je dis étrange, parce que c'était mes premiers pas avec webpack, mais
 ça n'a rien de surprenant quand on comprend l'outil un peu mieux.
 
