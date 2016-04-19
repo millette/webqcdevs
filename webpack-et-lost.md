@@ -449,5 +449,42 @@ sans toujours recopier le même HTML, par exemple.
 [le point RoLLodeQc]: http://lepoint.rollodeqc.com/#modules
 
 ## Lost, prêt à s'y retrouver
-Enfin, tel que promis il y a 1500 mots, le temps de regarder Lost de
+Tel que promis il y a 1500 mots, c'est le temps de regarder [Lost][] de
 plus près pour maitriser les grilles *responsive*.
+
+### Parenthèse Twitter Bootstrap
+Avant Twitter Bootstrap, je n'avais jamais touché aux grilles
+et les sites responsives étaient de la magie noire pour moi. Je faisais
+du Drupal et les breakpoints, pictures et autres modules attiraient mon
+attention. C'est à ce moment là que j'ai sorti la tête de Drupal pour
+regarder autour tout ce qui se faisait. Je me suis lancé dans CouchDB,
+NodeJS, etc. mais c'est une autre histoire.
+
+Avec Bootstrap, on va souvent utiliser les classes `col-sm-2`, `col-lg-5`,
+et ainsi de suite dans notre HTML pour disposer des éléments sur un
+nombre de colonnes (2 et 5 ici) et selon la largeur de la fenêtre:
+small, large, etc.
+
+Ça donne à peu près:
+
+```html
+<div class="row">
+  <div class="col-sm-2 col-lg-5">
+    <p>Cette colonne est très étroite sur un petit écran, moyenne sur un écran large.</p>
+  </div>
+  <div class="col-sm-10 col-lg-7">
+    <p>Cette colonne est très large sur un petit écran, moyenne (légèrement plus large) sur un écran large.</p>
+  </div>
+</div>
+```
+
+Bien qu'il n'y ait pas de `style=""` dans le HTML, c'est quand même là
+que se joue notre *layout*. Ça serait mieux dans un fichier CSS. C'est
+d'ailleurs possible avec Bootstrap (en passant par Less ou SASS) et
+en faisant usage des mixins, mais on ne voit rarement ces exemples.
+
+### Séparation entre le contenu et sa présentation
+Comme Lost n'a pas de version css qu'on peut utiliser directement,
+on doit absolument travailler à partir d'un fichier CSS, le HTML
+ne suffit pas. Ça force une séparation des responsabilités entre
+le contenu et sa présentation.
