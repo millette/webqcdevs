@@ -488,3 +488,48 @@ Comme Lost n'a pas de version css qu'on peut utiliser directement,
 on doit absolument travailler à partir d'un fichier CSS, le HTML
 ne suffit pas. Ça force une séparation des responsabilités entre
 le contenu et sa présentation.
+
+Par exemple:
+
+```html
+<section>
+  <div class="sidebar">
+    <p>Cette colonne est très étroite sur un petit écran, moyenne sur un écran large.</p>
+  </div>
+  <div class="content">
+    <p>Cette colonne est très large sur un petit écran, moyenne (légèrement plus large) sur un écran large.</p>
+  </div>
+<section>
+```
+
+Sans style, les deux paragraphes apparaissent l'un sous l'autre.
+Ajoutons donc style.css:
+
+```css
+@custom-media --only-large-screen (width >= 75em);
+
+section {
+  lost-utility: clearfix;
+}
+
+.sidebar {
+  lost-column: 2/12;
+}
+
+.content {
+  lost-column: 10/12;
+}
+
+@media (--only-large-screen) {
+  .sidebar {
+    lost-column: 5/12;
+  }
+
+  .content {
+    lost-column: 7/12;
+  }
+}
+```
+
+Là on devrait obtenir quelque chose de similaire au résultat obtenu
+avec Bootstrap.
