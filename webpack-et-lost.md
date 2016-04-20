@@ -531,5 +531,26 @@ section {
 }
 ```
 
-Là on devrait obtenir quelque chose de similaire au résultat obtenu
+On devrait obtenir quelque chose de similaire au résultat obtenu
 avec Bootstrap.
+
+La première ligne:
+
+```css
+@custom-media --only-large-screen (width >= 75em);
+```
+
+On utilise un [custom  media query de cssnext][] pour définir un
+écran large qui sert quelques lignes plus loin:
+
+```css
+@media (--only-large-screen) {
+```
+
+Pour s'assurer que les sections s'affichent les unes sur les autres,
+on fait appel à ```lost-utility: clearfix```.
+
+Enfin, on défini la taille des colonnes par des fractions qu'on assigne
+avec ```lost-column```.
+
+[custom  media query de cssnext]: http://cssnext.io/features/#custom-media-queries
