@@ -22,6 +22,11 @@ module.exports = {
       }
     ]
   },
+  jadeLoader: {
+    locals: {
+      data: require('./data.json')
+    }
+  },
   postcss: (webpack) => [
     require('postcss-import')({ addDependencyTo: webpack }),
     require('postcss-url')(),
