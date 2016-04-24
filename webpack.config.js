@@ -1,5 +1,8 @@
 'use strict'
 
+const data = require('./data.json')
+const data200 = data.filter((x) => x.http_status === 200)
+
 module.exports = {
   entry: [
     './entry.js',
@@ -24,7 +27,8 @@ module.exports = {
   },
   jadeLoader: {
     locals: {
-      data: require('./data.json')
+      data: data,
+      data200: data200
     }
   },
   postcss: (webpack) => [
