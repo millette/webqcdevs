@@ -1,4 +1,4 @@
-/* globals $, d3*/
+/* globals $, d3, myData*/
 'use strict'
 
 $(() => {
@@ -19,7 +19,7 @@ $(() => {
   const yAxis = d3.svg.axis()
     .scale(y)
     .orient('left')
-    .ticks(10, '%')
+    // .ticks(10, '%')
 
   const svg = d3.select('body').append('svg')
     .attr('width', width + margin.left + margin.right)
@@ -27,39 +27,32 @@ $(() => {
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-  const type = (d) => {
-    d.frequency = +d.frequency
-    return d
-  }
+  const data = myData
 
-  d3.csv('data.csv', type, (error, data) => {
-    if (error) throw error
+  x.domain(data.map((d) => d.letter))
+  y.domain([0, d3.max(data, (d) => d.frequency)])
 
-    x.domain(data.map((d) => d.letter))
-    y.domain([0, d3.max(data, (d) => d.frequency)])
+  svg.append('g')
+    .attr('class', 'x axis')
+    .attr('transform', 'translate(0,' + height + ')')
+    .call(xAxis)
 
-    svg.append('g')
-      .attr('class', 'x axis')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(xAxis)
+  svg.append('g')
+    .attr('class', 'y axis')
+    .call(yAxis)
+    .append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', 6)
+    .attr('dy', '.71em')
+    .style('text-anchor', 'end')
+    .text('Frequency')
 
-    svg.append('g')
-      .attr('class', 'y axis')
-      .call(yAxis)
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', 6)
-      .attr('dy', '.71em')
-      .style('text-anchor', 'end')
-      .text('Frequency')
-
-    svg.selectAll('.bar')
-      .data(data)
-      .enter().append('rect')
-      .attr('class', 'bar')
-      .attr('x', (d) => x(d.letter))
-      .attr('width', x.rangeBand())
-      .attr('y', (d) => y(d.frequency))
-      .attr('height', (d) => height - y(d.frequency))
-  })
+  svg.selectAll('.bar')
+    .data(data)
+    .enter().append('rect')
+    .attr('class', 'bar')
+    .attr('x', (d) => x(d.letter))
+    .attr('width', x.rangeBand())
+    .attr('y', (d) => y(d.frequency))
+    .attr('height', (d) => height - y(d.frequency))
 })

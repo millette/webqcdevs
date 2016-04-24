@@ -10,3 +10,12 @@ block content
     Données sur #{data.length} sites,
     dont #{data200.length} avec un HTTP status code de 200.
 
+  script
+    -
+      counts = countBy(data, 'http_status')
+      myData = sortBy(
+        Object.keys(counts)
+          .map((x) => { return { letter: x, frequency: counts[x] } }),
+        'frequency'
+      ).reverse()
+    != 'myData = ' + JSON.stringify(myData, null, ' ')
