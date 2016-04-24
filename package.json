@@ -13,10 +13,8 @@
     "node": ">=4"
   },
   "scripts": {
-    "quick-start": "webpack-dev-server",
     "start": "standard && webpack-dev-server",
     "lint": "standard",
-    "quick-make": "webpack && mkdir -p dist/js/polyfill/ ; cp data.csv crossdomain.xml favicon.ico index.html bundle.js dist/ && cp js/polyfill/* dist/js/polyfill/",
     "make": "standard && webpack && mkdir -p dist/js/polyfill/ ; cp data.csv crossdomain.xml favicon.ico index.html bundle.js dist/ && cp js/polyfill/* dist/js/polyfill/"
   },
   "standard": {
