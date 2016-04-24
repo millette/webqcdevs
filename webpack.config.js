@@ -27,6 +27,8 @@ module.exports = {
   },
   jadeLoader: {
     locals: {
+      countBy: require('lodash.countby'),
+      sortBy: require('lodash.sortby'),
       data: data,
       data200: data200
     }
