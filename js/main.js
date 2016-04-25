@@ -3,8 +3,8 @@
 
 $(() => {
   const margin = {top: 20, right: 20, bottom: 30, left: 40}
-  const width = 660 - margin.left - margin.right
-  const height = 350 - margin.top - margin.bottom
+  const width = 960 - margin.left - margin.right
+  const height = 450 - margin.top - margin.bottom
 
   const x = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.1)

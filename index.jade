@@ -12,10 +12,20 @@ block content
 
   script
     -
-      counts = countBy(data, 'http_status')
+      const data2 = data
+        .filter((x) => x.http_status === 200)
+        .map((x) => {
+          x._key = x.plugins.HTTPServer &&
+            x.plugins.HTTPServer.string &&
+            x.plugins.HTTPServer.string[0] &&
+            x.plugins.HTTPServer.string[0].slice(0, 5)
+          return x
+        })
+
+      counts = countBy(data2, '_key')
       myData = sortBy(
         Object.keys(counts)
           .map((x) => { return { letter: x, frequency: counts[x] } }),
         'frequency'
-      ).reverse()
+      ).reverse().slice(0, 20)
     != 'myData = ' + JSON.stringify(myData, null, ' ')
